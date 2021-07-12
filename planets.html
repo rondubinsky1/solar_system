@@ -1,0 +1,258 @@
+<html>
+    <head>
+        <link href="stylesheet.css"  rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+
+        <canvas id="render-canvas"></canvas>
+        <script>
+            //import say from "try.html";
+            //say.say();
+            var canvas = document.getElementById("render-canvas");
+            var engine = new BABYLON.Engine(canvas);
+            var scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color3(0.03, 0.03, 0.03);
+            //var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, -30), scene);
+            //camera.attachControl(canvas, true);
+            var camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI / 2, Math.PI / 2, 25, BABYLON.Vector3.Zero(), scene);
+            camera.rotation.x = -3;
+            camera.rotation.y = -8;
+            camera.rotation.z = -0.2;
+            // This targets the camera to scene origin
+            camera.setTarget(BABYLON.Vector3.Zero());
+            // This attaches the camera to the canvas
+            camera.attachControl(canvas, true);
+            var light = new BABYLON.PointLight("light", new BABYLON.Vector3(-1, 6, 2), scene);
+
+            //mecury
+            var mecury = BABYLON.Mesh.CreateSphere("sphere", 26.0, 0.3, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(139/255, 69/255, 19/255);
+            mecury.material = SphereMaterial;
+            mecury.position.x = 1
+            mecury.position.y = 1
+
+            const circle1 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 3, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle1.rotation.x = 1.5
+            circle1.material = SphereMaterial;
+
+            //venus
+            var venus = BABYLON.Mesh.CreateSphere("sphere", 26.0, 0.4, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 235/255, 205/255);
+            venus.material = SphereMaterial;
+            venus.position.x = 2
+            venus.position.y = 1
+
+            const circle2 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 5, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle2.rotation.x = 1.5
+            circle2.material = SphereMaterial;
+
+            //var Sphere = BABYLON.Mesh.CreateSphere("Sphere", 16, 2, scene);
+            //earth
+            var earth = BABYLON.Mesh.CreateSphere("sphere", 26.0, 0.4, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(0, 0, 0.6);
+            earth.material = SphereMaterial;
+            earth.position.x = 3
+            earth.position.y = 1
+
+            const circle3 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 7, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle3.rotation.x = 1.5
+            circle3.material = SphereMaterial;
+
+            //moon
+            var moon = BABYLON.Mesh.CreateSphere("sphere", 20.0, 0.09, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(0.255,0.255,0.102);
+            moon.position.x = 3
+            moon.position.y = 1
+            moon.material = SphereMaterial;
+
+            
+            //jupiter
+            var jupiter = BABYLON.Mesh.CreateSphere("sphere", 26.0, 1, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(210/255,180/255,140/255);
+            jupiter.material = SphereMaterial;
+            jupiter.position.x = 5
+            jupiter.position.y = 1
+
+            const circle4 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 9.5, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle4.rotation.x = 1.5
+            circle4.material = SphereMaterial;
+
+            //mars
+            var mars = BABYLON.Mesh.CreateSphere("sphere", 26.0, 0.34, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255,80/255,6/255);
+            mars.material = SphereMaterial;
+            mars.position.x = 6.4
+            mars.position.y = 1
+
+            const circle5 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 11.9, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle5.rotation.x = 1.5
+            circle5.material = SphereMaterial;
+
+            //sun
+            var sun = BABYLON.Mesh.CreateSphere("sphere", 40.0, 1.6, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial2 = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial2.emissiveColor = new BABYLON.Color3(255/255,127/255,80/255);
+            sun.position.x = 0
+            sun.position.y = 0
+            sun.material = SphereMaterial2;
+
+
+            //satrun
+            const satrunTorus = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, diameter: 1.5, tessellation: 60});
+            satrunTorus.rotation.x = -3;
+            satrunTorus.rotation.y = -8;
+            satrunTorus.rotation.z = -0.2;
+            var material = new BABYLON.StandardMaterial("material01", scene);
+            material.emissiveColor = new BABYLON.Color3(255/255, 199/255, 179/255);
+            satrunTorus.material = material;
+            satrunTorus.position.x = 8
+            satrunTorus.position.y = 1
+
+            material.diffuseColor = new BABYLON.Color3(1, 0, 1);
+
+            var satrun = BABYLON.Mesh.CreateSphere("sphere", 26.0, 1, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(179/255, 169/255, 179/255);
+            satrun.material = SphereMaterial;
+            satrun.position.x = 8
+            satrun.position.y = 1
+
+            const circle6 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 15.9, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle6.rotation.x = 1.5
+            circle6.material = SphereMaterial;
+
+            //uranuce
+            const uranuceTorus = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 1.3, tessellation: 60});
+            uranuceTorus.rotation.x = -3;
+            uranuceTorus.rotation.y = -8;
+            uranuceTorus.rotation.z = -0.2;
+            var material = new BABYLON.StandardMaterial("material01", scene);
+            material.emissiveColor = new BABYLON.Color3(0/255, 139/255, 139/255);
+            uranuceTorus.material = material;
+            uranuceTorus.position.x = 10
+            uranuceTorus.position.y = 1
+
+            material.diffuseColor = new BABYLON.Color3(1, 0, 1);
+
+            var uranuce = BABYLON.Mesh.CreateSphere("sphere", 26.0, 0.8, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(64/255, 244/255, 208/255);
+            uranuce.material = SphereMaterial;
+            uranuce.position.x = 10
+            uranuce.position.y = 1
+
+            const circle7 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 19.9, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle7.rotation.x = 1.5
+            circle7.material = SphereMaterial;
+            //Neptune
+
+
+            var neptune = BABYLON.Mesh.CreateSphere("sphere", 26.0, 0.9, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(65/255, 105/255, 225/255);
+            neptune.material = SphereMaterial;
+            neptune.position.x = 12
+            neptune.position.y = 1
+
+            const circle8 = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.002, diameter: 23.9, tessellation: 60});
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(255/255, 255/255, 255/255);
+            circle8.rotation.x = 1.5
+            circle8.material = SphereMaterial;
+
+
+            var mecuryMove = 0
+            var venusMove = 0
+            var moonMove = 0;
+            var earthAndMoon = 0;
+            var jupiterMove = 0;
+            var marsMove = 0;
+            var satrunMove = 0
+            var uranuceMove = 0
+            var neptuneMove = 0
+            var main = function scence(){
+                //mecury
+                mecuryMove += 0.005;
+                mecury.position.x = Math.cos(mecuryMove)*1.5
+                mecury.position.y = Math.sin(mecuryMove)*1.5
+
+
+                //venus
+                venusMove += 0.0066;
+                venus.position.x = Math.cos(venusMove)*2.5
+                venus.position.y = Math.sin(venusMove)*2.5
+
+                // moon
+                moonMove+=0.013;
+                moon.position.x = Math.cos(moonMove)*0.5
+                moon.position.y = Math.sin(moonMove)*0.5
+
+                //earth and moon
+                
+                earthAndMoon+=0.0055;
+                earth.position.x = Math.cos(earthAndMoon)*3.5
+                earth.position.y = Math.sin(earthAndMoon)*3.5
+
+                moon.position.x += Math.cos(earthAndMoon)*3.5
+                moon.position.y += Math.sin(earthAndMoon)*3.5
+
+                //jupiter
+                jupiterMove += 0.0069;
+                jupiter.position.x = Math.cos(jupiterMove)*4.8
+                jupiter.position.y = Math.sin(jupiterMove)*4.8
+
+                //mars
+                marsMove += 0.0072;
+                mars.position.x = Math.cos(marsMove)*6
+                mars.position.y = Math.sin(marsMove)*6
+                
+                //satrun
+                satrunMove += 0.0061;
+                satrun.position.x = Math.cos(satrunMove)*8
+                satrun.position.y = Math.sin(satrunMove)*8
+                
+                satrunTorus.position.x = Math.cos(satrunMove)*8
+                satrunTorus.position.y = Math.sin(satrunMove)*8
+                
+                //uranuce
+                uranuceMove += 0.0061;
+                uranuce.position.x = Math.cos(uranuceMove)*10
+                uranuce.position.y = Math.sin(uranuceMove)*10
+                
+                uranuceTorus.position.x = Math.cos(uranuceMove)*10
+                uranuceTorus.position.y = Math.sin(uranuceMove)*10
+
+                //neptune
+                neptuneMove += 0.004;
+                neptune.position.x = Math.cos(neptuneMove)*12
+                neptune.position.y = Math.sin(neptuneMove)*12
+                
+                scene.render();
+            }
+
+            engine.runRenderLoop(main);
+        </script>
+        
+    </body>
+</html>

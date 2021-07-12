@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <link href="stylesheet.css"  rel="stylesheet">
+    </head>
+    <body>
+        <script src="https://cdn.babylonjs.com/babylon.js"></script>
+
+        <canvas id="render-canvas"></canvas>
+        <script>
+            function say(){
+                console.log("Hellow")
+            }
+            
+            var canvas = document.getElementById("render-canvas");
+            var engine = new BABYLON.Engine(canvas);
+            var scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color3(0.03, 0.03, 0.03);
+            var camera = new BABYLON.FreeCamera("camera", new BABYLON.Vector3(0, 0, -20), scene);
+            var light = new BABYLON.PointLight("light", new BABYLON.Vector3(-1, 6, 2), scene);
+            light.clearColor = new BABYLON.Color3(1, 1, 1);
+
+            //satrum
+            const torus = BABYLON.MeshBuilder.CreateTorus("torus", {diameter: 3});
+            torus.rotation.x = -3;
+            torus.rotation.y = -8;
+            torus.rotation.z = -0.2;
+            var material = new BABYLON.StandardMaterial("material01", scene);
+            material.emissiveColor = new BABYLON.Color3(255/255, 199/255, 179/255);
+            torus.material = material;
+            torus.position.x = 1.5
+            torus.position.y = 0
+
+            material.diffuseColor = new BABYLON.Color3(1, 0, 1);
+
+            var satrum = BABYLON.Mesh.CreateSphere("sphere", 26.0, 2, scene, false,  BABYLON.Mesh.DEFAULTSIDE);
+            var SphereMaterial = new BABYLON.StandardMaterial("material", scene)
+            SphereMaterial.emissiveColor = new BABYLON.Color3(179/255, 169/255, 179/255);
+            satrum.material = SphereMaterial;
+            satrum.position.x = 0
+            satrum.position.y = 0
+
+
+
+
+            var satrumMove = 0
+
+            var main = function scence(){
+                //satrum
+                satrumMove += 0.006;
+                satrum.position.x = Math.cos(satrumMove)*1.5
+                satrum.position.y = Math.sin(satrumMove)*1.5
+                
+                torus.position.x = Math.cos(satrumMove)*1.5
+                torus.position.y = Math.sin(satrumMove)*1.5
+
+                
+                
+                scene.render();
+            }
+
+            engine.runRenderLoop(main);
+            
+        </script>
+        
+    </body>
+</html>
